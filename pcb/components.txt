@@ -1,0 +1,10 @@
+GPS: http://blog.simtronyx.de/kurz-vorgestellt-gps-modul-gy-gps6mv2-mit-neo-6m-von-u-blox/
+LMR33630 Simple Switcher: https://www.ti.com/lit/ds/symlink/lmr33630.pdf
+SPM5030VT-D Inductor: https://4donline.ihs.com/images/VipMasterIC/IC/TDKC/TDKC-S-A0010773052/TDKC-S-A0010773052-1.pdf?hkey=EF798316E3902B6ED9A73243A3159BB0
+OBD2 plug: https://www.obd2-shop.eu/product_info.php/cPath/21_65_69/products_id/169
+ESP32: https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf
+ESP32-WROOM-32: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf
+ICM-20689: https://3cfeqx1hf82y3xcoull08ihx-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/ICM-20689-v2.2-002.pdf
+BMP280: https://www.mouser.de/datasheet/2/783/BST-BMP280-DS001-1509562.pdf
+CP2101n: https://www.mouser.de/datasheet/2/368/cp2102n_datasheet-1634912.pdf
+
