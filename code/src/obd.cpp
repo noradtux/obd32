@@ -19,14 +19,14 @@ struct can_frame {
 
 union bit_field {
 	uint8_t value;
-	uint8_t bit1 : 1;
-	uint8_t bit2 : 1;
-	uint8_t bit3 : 1;
-	uint8_t bit4 : 1;
-	uint8_t bit5 : 1;
-	uint8_t bit6 : 1;
-	uint8_t bit7 : 1;
-	uint8_t bit8 : 1;
+	uint8_t bit1 : 1,
+	        bit2 : 1,
+			  bit3 : 1,
+			  bit4 : 1,
+			  bit5 : 1,
+			  bit6 : 1,
+			  bit7 : 1,
+			  bit8 : 1;
 };
 
 bool IsoTpInitialized = false;
