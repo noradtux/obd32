@@ -10,6 +10,7 @@
 #define DEBUG
 
 const uint8_t CanFlowMsg[] = {0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+const long TransactionTimeout = 1000;	// 1000 Millis -> 1 Sec
 
 struct can_frame {
 	uint32_t can_id;
@@ -61,8 +62,9 @@ struct {
 	uint8_t data_buf[ISOTP_MAX_MSG_LEN];
 	void (*isotp_callback)(uint8_t *, size_t);
 	void (*frame_callback)(struct can_frame *);
-	unsigned int can_receive_registered : 1;
-	unsigned int transaction_running : 1;
+	unsigned long transaction_started;
+	unsigned int can_receive_registered : 1,
+	             transaction_running : 1;
 } IsoTpState;
 
 void isotp_receive(int packet_size) {
@@ -159,12 +161,15 @@ int isotp_cmd(uint32_t can_rx, uint32_t can_tx, uint8_t* cmd, size_t cmd_len,
 	hexdump(frame.data, frame.length, 8);
 #endif
 
-	while(IsoTpState.transaction_running);	// block if another transaction is already running
+	// block if another transaction is already running
+	while(IsoTpState.transaction_running &&
+			millis() - IsoTpState.transaction_started < TransactionTimeout);
 
 	CAN.filter(can_rx, 0x7ff);
 
 	IsoTpState.can_tx = can_tx;
 	IsoTpState.isotp_callback = callback;
+	IsoTpState.transaction_started = millis();
 	IsoTpState.transaction_running = true;
 
 	CAN.beginPacket(can_tx);
